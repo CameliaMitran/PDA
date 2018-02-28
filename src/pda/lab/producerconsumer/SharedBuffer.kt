@@ -20,7 +20,7 @@ class SharedBuffer(private val bufferSize: Int) {
         }
         //Thread.sleep(Random().nextInt(100).toLong())
         bufferList.add(message)
-        println("Message $message was added to the buffer.")
+        println("$message was added to the buffer.")
         lock.notifyAll()
     }
 
@@ -32,7 +32,7 @@ class SharedBuffer(private val bufferSize: Int) {
             lock.wait()
         }
         message = bufferList.removeAt(0)
-        println("Message $message removed from buffer.")
+        println("$message was removed from buffer.")
         lock.notifyAll()
         return message
     }
