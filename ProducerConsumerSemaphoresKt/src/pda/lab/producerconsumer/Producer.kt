@@ -10,9 +10,9 @@ class Producer(private val buffer: SharedBuffer) : Thread() {
     override fun run() {
         while(true){
             val item = generateMessage()
-            buffer.semaphoreFree.release()//--
+            buffer.semaphoreFree.acquire()//--
             buffer.put(item)
-            buffer.semaphoreFull.acquire()//++
+            buffer.semaphoreFull.release()//++
         }
     }
 
