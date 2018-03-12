@@ -10,6 +10,13 @@ class SharedBuffer(@Volatile var bufferSize: Int,
     //val for immutable properties
     private val bufferList = ArrayList<String>()
 
+    private val lock = java.lang.Object()
+    @Synchronized
+    fun isFull(): Boolean { return bufferList.size == bufferSize}
+    @Synchronized
+    fun isEmpty(): Boolean { return bufferList.isEmpty()}
+  
+    @Synchronized
     fun put(message: String) = synchronized(lock){
         while (isFull()){
             print(message)
