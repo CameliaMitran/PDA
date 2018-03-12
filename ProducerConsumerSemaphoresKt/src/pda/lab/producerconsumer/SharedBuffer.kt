@@ -36,8 +36,9 @@ class SharedBuffer(@Volatile var bufferSize: Int,
             lock.wait()
         }
         message = bufferList.removeAt(0)
-        println("$message was removed from buffer.")
+      
         lock.notifyAll()
+        println("$message was removed from buffer.")
         return message
     }
 }
