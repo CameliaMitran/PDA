@@ -9,8 +9,8 @@ class SharedBuffer(@Volatile var bufferSize: Int,
                    @Volatile var semaphoreFree: Semaphore) {
     //val for immutable properties
     private val bufferList = ArrayList<String>()
-
     private val lock = java.lang.Object()
+  
     @Synchronized
     fun isFull(): Boolean { return bufferList.size == bufferSize}
     @Synchronized
