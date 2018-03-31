@@ -1,0 +1,4 @@
+﻿  stdafx.cpp
+  HelloWMPI.cpp
+d:\cursuri_an_iii\sem2\pda\lab\helloworldmpi\hellowmpi\hellowmpi\hellowmpi.cpp(10): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  HelloWMPI.vcxproj -> D:\Cursuri_an_III\Sem2\PDA\Lab\HelloWorldMPI\HelloWMPI\Debug\HelloWMPI.exe
