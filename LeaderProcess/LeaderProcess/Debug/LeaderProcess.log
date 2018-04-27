@@ -1,0 +1,3 @@
+﻿  LeaderProcess.cpp
+d:\cursuri_an_iii\sem2\pda\lab\leaderprocess\leaderprocess\leaderprocess.cpp(23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+LINK : fatal error LNK1104: cannot open file 'D:\Cursuri_an_III\Sem2\PDA\Lab\LeaderProcess\Debug\LeaderProcess.exe'
