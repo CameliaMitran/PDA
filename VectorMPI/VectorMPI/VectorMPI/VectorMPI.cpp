@@ -21,7 +21,6 @@ int main(int argc, char *argv[])
     int i;
     int id;
     int p;
-    double PI = 3.141592653589793238462643;
     double seed;
     MPI_Status status;
     double sum;
