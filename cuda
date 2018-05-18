@@ -1,0 +1,49 @@
+#include<iostream>
+#include <ctime>
+#include <cstdlib>
+#include <chrono>
+
+
+#define inf 9999
+#define N 7
+int k;
+float a[7][7]={{0, 0, 0, 0, 0, 0, 0}
+			{0, 0, 2, 1, inf, 7, 5}
+			{0, 2, 0, inf, 5, inf, inf}
+			{0, 1, inf, 0, inf, 4, 2}
+			{0, inf, 5, inf, 0, 7, inf}
+			{0, 7, inf, 4, 7, 0, inf}
+			{0, 5, inf, 2, inf, inf, 0}}
+
+// Kernel definition
+__global__ void royFloyd(float a[N][N],int k)
+{
+    int i = threadIdx.x;
+    int j = threadIdx.y;
+	if(a[i][j]>a[i][k]+a[k][j])
+		a[i][j]=a[i][k]+a[k][j];
+}
+
+
+int main()
+{
+    
+    // Kernel invocation with one block of N * N * 1 threads
+    int numBlocks = 1;
+    dim3 threadsPerBlock(N, N);
+    size_t size = N* sizeof(float);
+    int* d_A;
+    cudaMalloc(&d_A, size);
+    cudaMemcpy(d_A, *a, size, cudaMemcpyHostToDevice);
+    for(k=1;k<N;k++)
+		royFloyd<<<numBlocks, threadsPerBlock>>>(a,k);
+	int i,j;
+	for(i=1;i<N;i++)
+	{	
+		cout<<i<<": ";
+		for(j=1;j<N;j++)
+			cout<<a[i][j]<<" ";
+		cout<<endl;
+	}
+    return 0;
+}
